@@ -6,3 +6,4 @@ This is the project that provide design draft of LeotardCraft User Dashboard. Th
 Project prepared as a part of education in **Software Engineering Bootcamp** at *Per Scholas* by [Kseniia Irinarkhova](https://www.linkedin.com/in/kseniia-irinarkhova/).
 
 # Additional Resources
+- [Load HTML template with JavaScript](https://stackoverflow.com/questions/6451169/load-html-template-with-javascript)

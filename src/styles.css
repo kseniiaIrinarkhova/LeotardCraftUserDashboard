@@ -288,14 +288,22 @@ a:link {
 .footer-links a:hover {
     color: #BDA7DC;
 }
+/*********************************************/
+.form-container {
+    width: 680px;
+        margin: 10px;
+        padding: 5px;
+        display: grid;
+        grid-template-areas: "reg login";
+        grid-template-columns: 1fr 1fr;
+        
+}
+
 
 /********************LogIn page*****/
 
 div.login-form {
-    position: absolute;
-    top: 180px;
-    left: 45vw;
-    ;
+    grid-area: "login";
     width: 250px;
     height: 400px;
     text-align: center;
@@ -323,9 +331,7 @@ a {
 /********************Registration page*****/
 
 div.register-form {
-    position: absolute;
-    top: 180px;
-    left: 40vw;
+    grid-area: "reg";
     width: 400px;
     height: 500px;
     text-align: center;
