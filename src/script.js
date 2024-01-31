@@ -44,7 +44,11 @@ async function addTemplate(fileName){
     console.log("parser begin")
     console.log(parser)
     console.log("parser end")
-    // document.head.append
+    document.head.append(
+        new DOMParser().parseFromString(templateData, 'text/html')
+            .querySelector('template')
+    )
+
     console.log(document.head)
 }
 
