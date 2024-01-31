@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>LeotardCraft - Registration/Login</title>
+    <link rel="stylesheet" href="./src/styles.css" />    
+    <script defer type="text/javascript" src="./src/script.js"></script>
+</head>
+
+<body>
+    <!-- Container for entire form. -->
+    <div class="form-container">
+        <!-- Registration Side -->
+        <div class="register-form">
+            <h1>Register</h1>
+            <p>Please provide your information below.</p>
+            
+            <!-- Registration Form -->
+            <form action="#" id="registration">
+                <table class="reg-table">
+                    <tr>
+                        <td class="td-label"><label for="firstName">First Name</label></td>
+                        <td class="td-input"><input type="text" id="firstName" placeholder="Enter Your First Name"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-label"><label for="lastName">Last Name</label></td>
+                        <td class="td-input"><input type="text" id="lastName" placeholder="Enter Your Last Name"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-label"><label for="email">Email</label></td>
+                        <td class="td-input"><input type="email" id="email" placeholder="Enter Your Email"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-label"><label for="password">Password</label></td>
+                        <td class="td-input"><input type="text" id="password" placeholder="Enter Your Password"></td>
+                    </tr>
+                    <tr>
+                        <td class="td-label"><label for="passwordCnfrm">Confirm Password</label></td>
+                        <td class="td-input"><input type="password" id="passwordCnfrm" placeholder="Confirm Your Password"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <fieldset>
+                                <legend>Your path in leoratd creation</legend>
+                                <label for="prof">Professional</label>
+                                <input type="radio" id="prof" name="experience" value="prof">
+                                <label for="amateur">Amateur</label>
+                                <input type="radio" id="amateur" name="experience" value="amateur">
+                            </fieldset>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-label"><label for="dofbirth">Date of Birth</label></td>
+                        <td class="td-input"><input type="date" id="dofbirth"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <fieldset>
+                                <legend>Interests</legend>
+                                <ul>
+                                    <li>
+                                        <input type="checkbox" name="interest" value="design" id="design">
+                                        <label for="design">Leotard's design</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="interest" value="materials" id="materials">
+                                        <label for="materials">Materials selection</label>
+                                    </li>
+                                    <li><input type="checkbox" name="interest" value="plan" id="plan">
+                                        <label for="plan">Planning</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="submit" value="Register" id="reg-btn"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+
+        <!-- Login Side -->
+        <div>
+            <h1>Login</h1>
+            <p>Login using your account information.</p>
+
+            <!-- Login Form -->
+            <form action="#" id="login">
+                <p>
+                    <input type="text" placeholder="UserName">
+                </p>
+                <p>
+                    <input type="password" placeholder="Password">
+                </p>
+                <p>
+                    <input type="submit" value="Login" id="login-btn">
+                </p>
+            </form>
+
+            <p>Forgot your <a href="#">Username</a> or <a href="#">Password?</a></p>
+        </div>
+    </div>
+
+    <!-- Error Display Container -->
+    <div id="errorDisplay"></div>
+</body>
+
+</html>
