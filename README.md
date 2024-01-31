@@ -7,3 +7,4 @@ Project prepared as a part of education in **Software Engineering Bootcamp** at 
 
 # Additional Resources
 - [Load HTML template with JavaScript](https://stackoverflow.com/questions/6451169/load-html-template-with-javascript)
+- [How do I load the contents of a text file into a javascript variable?](https://stackoverflow.com/questions/196498/how-do-i-load-the-contents-of-a-text-file-into-a-javascript-variable)

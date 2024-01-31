@@ -22,7 +22,7 @@ body {
         "nav"
         "main"
         "footer";
-    grid-template-rows: 160px 1fr 250px;
+    grid-template-rows: 160px 1fr 180px;
     grid-template-columns: 1fr;
     padding-left: 5%;
     padding-right: 5%;
@@ -48,7 +48,7 @@ body>main {
     grid-area: main;
     background-color: #C9E4DE;
     width: 92vw;
-    min-height: 50vh;
+    min-height: 75vh;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-between;

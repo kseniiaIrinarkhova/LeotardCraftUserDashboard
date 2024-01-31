@@ -4,8 +4,8 @@ userLogin.onclick = function (event) {
     event.preventDefault()
     deleteChilds(mainContent);
     addLoginInfoToMain();
-    
-    
+
+
     // $('#main-content').load('login_reg_template.html', function () { // Things to do when the html is loaded 
     // confirm.log("Can't add templates!")
     // });
@@ -21,8 +21,9 @@ function deleteChilds(element) {
     }
 }
 
-function addLoginInfoToMain() {
-    const template = addTemplate('login_reg_template.html');
+async function addLoginInfoToMain() {
+    const template = await addTemplate('login_reg_template.html');
+    insertTemplateData("reg-login", mainContent);
 }
 
 async function addTemplate(fileName) {
@@ -40,13 +41,15 @@ async function addTemplate(fileName) {
         new DOMParser().parseFromString(templateData, 'text/html')
             .querySelector('template')
     )
-    insertTemplateData("reg-login", mainContent);
 }
 
 function insertTemplateData(templateId, parentElement) {
-    console.log("insertTemplateData")
     const template = document.getElementById(templateId);
-    console.log(template)
-     const clone = template.content.cloneNode(true);
-     parentElement.appendChild(clone);
+    const clone = template.content.cloneNode(true);
+    parentElement.appendChild(clone);
+    let myStyle = `
+display: flex;
+justify-content: center;
+    align-content: center;`;
+    parentElement.style.cssText = myStyle;
 }
