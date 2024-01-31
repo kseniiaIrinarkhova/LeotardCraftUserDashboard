@@ -1,0 +1,368 @@
+/*additional elements*/
+@font-face {
+    font-family: curly-handwriting;
+    src: url(Ruthie\ Regular.ttf);
+}
+
+@font-face {
+    font-family: basic;
+    src: url(Amatic\ SC\ Regular.ttf);
+}
+
+/*------------------------Basic layout----------------------*/
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+body {
+    display: grid;
+    width: 90vw;
+    grid-template-areas:
+        "nav"
+        "main"
+        "footer";
+    grid-template-rows: 160px 1fr 250px;
+    grid-template-columns: 1fr;
+    padding-left: 5%;
+    padding-right: 5%;
+    min-width: 900px;
+}
+
+body>nav {
+    grid-area: nav;
+    background-color: #f4effa;
+    width: 92vw;
+    height: 160px;
+    display: grid;
+    grid-template-areas:
+        "header"
+        "menu";
+    grid-template-rows: 90px 50px;
+    grid-template-columns: 1fr;
+    position: fixed;
+    z-index: 100;
+}
+
+body>main {
+    grid-area: main;
+    background-color: #C9E4DE;
+    width: 92vw;
+    min-height: 50vh;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    padding-top: 10px;
+    gap: 10px;
+}
+
+body>footer {
+    grid-area: footer;
+    background-color: #9776C8;
+
+}
+
+/*----------------Navbar menu---------------------------*/
+/*first line with logo, search bar and user's related menu buttons*/
+#header {
+    grid-area: header;
+    display: flex;
+    flex-flow: row nowrap;
+    margin: 0;
+    padding: 0;
+}
+
+/*----------------------------Logo styling*/
+.logo {
+    padding: 15px 0 0 15px;
+    max-width: max(350px, 20%);
+    min-width: min(150px, 20%);
+}
+
+.logo img {
+    max-width: max(310px, 20%);
+    min-width: min(110px, 20%);
+    object-fit: contain;
+}
+
+/*----------------------------Search Bar*/
+.search-bar {
+    margin: auto;
+    width: max(500px, 40%);
+    padding: 15px;
+}
+
+form.search-form {
+    box-sizing: border-box;
+    height: 30px;
+}
+
+form.search-form input[type=text] {
+    float: left;
+    width: calc(90% - 50px);
+    border-radius: 15px 0 0 15px;
+    border: 1px solid black;
+    border-right: none;
+    text-align: right;
+    line-height: 18px;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 5px;
+}
+
+form.search-form button {
+    float: left;
+    width: 50px;
+    height: 30px;
+    border: 1px solid black;
+    border-radius: 0 15px 15px 0;
+    background-color: #9776C8;
+    border-left: 1px solid #9776C8;
+    font-size: 15px;
+    padding: 5px;
+}
+
+form.search-form img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+}
+
+/*----------------------------Personal menu*/
+.personal-menu {
+    width: 100px;
+    display: grid;
+    grid-template-areas: "user favorite";
+    grid-template-columns: 45px 45px;
+    justify-content: space-around;
+    align-content: center;
+    padding-right: 15px;
+}
+
+.personal-menu a {
+    font-size: 1em;
+    font-weight: bold;
+    padding: 5px;
+    display: block;
+    width: 45px;
+    height: 45px;
+    text-align: center;
+    text-decoration: none;
+    font-family: basic;
+}
+
+.personal-menu img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+}
+
+#user {
+    grid-area: user;
+}
+
+#favorite {
+    grid-area: favorite;
+}
+
+/*******************************************/
+/*Second line with catalog and quick linkes*/
+#menu {
+    grid-area: menu;
+    display: flex;
+    flex-flow: row nowrap;
+    height: 50px;
+    margin: 0;
+    padding: 10px 15px 10px 0;
+    width: 98%;
+
+}
+
+.menu-btn {
+    padding: 15px;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: center;
+    min-width: 70px;
+    font-family: basic;
+}
+
+.menu-btn.catalog {
+    margin-right: 50px;
+    background-color: #9776C8;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-content: center;
+    border-radius: 15px;
+}
+
+.menu-btn.menu-btn.catalog img {
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+}
+
+.menu-btn.right {
+    margin-left: auto;
+}
+
+.menu-btn.active {
+    background-color: #C9E4DE;
+    border-radius: 15px;
+}
+
+/*-----------nav bar hover effects---------*/
+.personal-menu a:hover,
+.menu-btn:hover {
+    text-decoration: underline;
+    color: #9776C8;
+}
+
+.menu-btn.menu-btn.catalog:hover {
+    background-color: #f4effa;
+    border: 2px solid #9776C8;
+}
+
+form.search-form button:hover {
+    background-color: #f4effa;
+    border-left: 1px solid #9776C8;
+}
+
+/*-----------------main block---------------*/
+
+
+h1 {
+    text-align: center;
+    color: #32456F;
+    font-family: curly-handwriting;
+    font-size: 3em;
+}
+
+
+
+/*-----Footer-----------*/
+footer>table {
+    position: relative;
+    left: 35vw;
+    border-collapse: collapse;
+    margin: 5px;
+    min-width: 400px;
+}
+
+/*zebra table style*/
+.footer-links tr:nth-child(odd) {
+    background-color: #855FBF;
+}
+
+.footer-links tr {
+    height: 2em;
+    /*min row height for better animation*/
+}
+
+.footer-links td.left {
+    text-align: right;
+    padding-right: 15px;
+    font-family: basic;
+    width: 30%;
+    transition-property: font-size;
+    transition-duration: 2s;
+}
+
+.footer-links td.left:hover {
+    font-size: 1.25em;
+}
+
+.footer-links ul {
+    padding-left: 0;
+    margin-left: 0;
+    list-style: none;
+    color: black;
+}
+
+.footer-links a:visited,
+a:link {
+    color: black;
+}
+
+.footer-links a:hover {
+    color: #BDA7DC;
+}
+
+/********************LogIn page*****/
+
+div.login-form {
+    position: absolute;
+    top: 180px;
+    left: 45vw;
+    ;
+    width: 250px;
+    height: 400px;
+    text-align: center;
+}
+
+.login-form p,
+a {
+    font-family: basic;
+    font-size: 1.1em;
+}
+
+#login-btn {
+    width: 150px;
+    height: 30px;
+    background-color: #9776C8;
+    border: none;
+    border-radius: 15px;
+}
+
+#login-btn:hover {
+    background-image: -webkit-linear-gradient(top, #855FBF, #9776C8);
+    /*gradient*/
+}
+
+/********************Registration page*****/
+
+div.register-form {
+    position: absolute;
+    top: 180px;
+    left: 40vw;
+    width: 400px;
+    height: 500px;
+    text-align: center;
+}
+
+.reg-table tr {
+    height: 1.5em;
+}
+
+.td-label {
+    text-align: right;
+    padding-right: 10px;
+}
+
+.td-input input {
+    width: 100%;
+}
+
+.reg-table ul {
+    text-align: left;
+    list-style: none;
+}
+
+.reg-table fieldset {
+    width: 100%;
+}
+
+#reg-btn {
+    width: 200px;
+    height: 30px;
+    background-color: #9776C8;
+    border: none;
+    border-radius: 15px;
+}
+
+#reg-btn:hover {
+    background-image: -webkit-linear-gradient(top, #855FBF, #9776C8);
+    /*gradient*/
+}
+
