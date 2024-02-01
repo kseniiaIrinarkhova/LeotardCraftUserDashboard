@@ -125,12 +125,12 @@ function addFormsEvents() {
             return false;
         }
 
-        // //form is valid
-        // let user = saveUser(regForm);
-        // if (user !== null) {
-        //     clearForm(regForm);
-        //     alert(`Congrads, ${user.username}! You are registred!`)
-        // }
+        //form is valid
+        let user = saveUser(regForm);
+        if (user !== null) {
+            //clearForm(regForm);
+            alert(`Congrads, ${user.username}! You are registred!`)
+        }
         return true;
     });
 
@@ -225,11 +225,10 @@ function showError(message, object) {
  */
 function saveUser(userInfoElement) {
     let newUser = {};
-    newUser["username"] = userInfoElement.elements["username"].value.toLowerCase();
+    newUser["username"] = userInfoElement.elements["userName"].value.toLowerCase();
     newUser["email"] = userInfoElement.elements["email"].value.toLowerCase();
     newUser["password"] = userInfoElement.elements["password"].value;
     localStorage.setItem(newUser.username, JSON.stringify(newUser));
-    //console.log(JSON.parse(localStorage.getItem(newUser.username)));
     return newUser;
 }
 
