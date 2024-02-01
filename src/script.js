@@ -130,7 +130,7 @@ function addFormsEvents() {
         if (user !== null) {
             //clearForm(regForm);
             alert(`Congrads, ${user.username}! You are registred!`)
-            changePageforAuthorized();
+            changePageforAuthorized(username.value);
         }
         return true;
     });
@@ -166,10 +166,8 @@ function addFormsEvents() {
             return false;
         }
 
-        //username and password are valid. greet user
-        alert(`Welcome, ${username.value}!`);
-        
-        changePageforAuthorized();
+        //username and password are valid. greet user        
+        changePageforAuthorized(username.value);
     });
 }
 
@@ -254,6 +252,8 @@ function userDataCheck(username, password) {
     return userData.password === password;
 }
 
-function changePageforAuthorized(){
-    
+function changePageforAuthorized(username){
+    deleteChilds(mainContent);
+    mainContent.appendChild(document.createElement("h1")).textContent = `Hello ${username}! Let's create!`
+
 }
