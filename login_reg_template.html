@@ -10,24 +10,29 @@
             <form action="#" id="registration">
                 <table class="reg-table">
                     <tr>
+                        <td class="td-label"><label for="userName">User Name</label></td>
+                        <td class="td-input"><input type="text" id="userName" placeholder="Enter Username" minlength="4" pattern="\w{4,}" title="only letters and numbers allowed" required>
+                        </td>
+                    </tr>
+                    <tr>
                         <td class="td-label"><label for="firstName">First Name</label></td>
-                        <td class="td-input"><input type="text" id="firstName" placeholder="Enter Your First Name"></td>
+                        <td class="td-input"><input type="text" id="firstName" placeholder="Enter Your First Name" minlength="2" required></td>
                     </tr>
                     <tr>
                         <td class="td-label"><label for="lastName">Last Name</label></td>
-                        <td class="td-input"><input type="text" id="lastName" placeholder="Enter Your Last Name"></td>
+                        <td class="td-input"><input type="text" id="lastName" placeholder="Enter Your Last Name" minlength="2" required></td>
                     </tr>
                     <tr>
                         <td class="td-label"><label for="email">Email</label></td>
-                        <td class="td-input"><input type="email" id="email" placeholder="Enter Your Email"></td>
+                        <td class="td-input"><input type="email" id="email" placeholder="Enter Your Email" required></td>
                     </tr>
                     <tr>
                         <td class="td-label"><label for="password">Password</label></td>
-                        <td class="td-input"><input type="text" id="password" placeholder="Enter Your Password"></td>
+                        <td class="td-input"><input type="text" id="password" placeholder="Enter Your Password" minlength="6" required></td>
                     </tr>
                     <tr>
                         <td class="td-label"><label for="passwordCnfrm">Confirm Password</label></td>
-                        <td class="td-input"><input type="password" id="passwordCnfrm" placeholder="Confirm Your Password"></td>
+                        <td class="td-input"><input type="password" id="passwordCnfrm" placeholder="Confirm Your Password" required></td>
                     </tr>
                     <tr>
                         <td colspan="2">
@@ -39,10 +44,6 @@
                                 <input type="radio" id="amateur" name="experience" value="amateur">
                             </fieldset>
                         </td>
-                    </tr>
-                    <tr>
-                        <td class="td-label"><label for="dofbirth">Date of Birth</label></td>
-                        <td class="td-input"><input type="date" id="dofbirth"></td>
                     </tr>
                     <tr>
                         <td colspan="2">
@@ -79,10 +80,10 @@
             <!-- Login Form -->
             <form action="#" id="login">
                 <p>
-                    <input type="text" placeholder="UserName">
+                    <input type="text" name="userName" placeholder="UserName" required>
                 </p>
                 <p>
-                    <input type="password" placeholder="Password">
+                    <input type="password" placeholder="Password" required>
                 </p>
                 <p>
                     <input type="submit" value="Login" id="login-btn">

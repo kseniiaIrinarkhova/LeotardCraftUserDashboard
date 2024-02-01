@@ -14,8 +14,14 @@ userLogin.onclick = function (event) {
     display: flex;
     justify-content: center;
     align-content: center;`;
+
     mainContent.style.cssText = myStyle;
+
+
 }
+
+
+
 
 
 
@@ -41,7 +47,12 @@ async function addLoginInfoToMain(templateName, templateId, parentElement) {
     //wait while templarte is added
     await addTemplate(templateName);
     //insert DOM objects from template on page
-    insertTemplateData(templateId, parentElement);
+    await insertTemplateData(templateId, parentElement);
+
+    if (templateId === "reg-login") {
+        addFormsEvents();
+    }
+
 }
 
 /**
@@ -70,7 +81,7 @@ async function addTemplate(fileName) {
  * @param {string} templateId 
  * @param {DOM element} parentElement 
  */
-function insertTemplateData(templateId, parentElement) {
+async function insertTemplateData(templateId, parentElement) {
     //find template on DOM document
     const template = document.getElementById(templateId);
     //make deep copy of template elements
@@ -78,4 +89,20 @@ function insertTemplateData(templateId, parentElement) {
     //append elements from template to parent element
     parentElement.appendChild(clone);
     
+}
+
+function addFormsEvents(){
+    const regForm = document.getElementById("registration");
+    const loginForm = document.getElementById("login");
+
+
+    regForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        console.log("reg form submit")
+    });
+
+    loginForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        console.log("login form submit")
+    });
 }
