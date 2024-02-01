@@ -49,6 +49,7 @@ async function addLoginInfoToMain(templateName, templateId, parentElement) {
     //insert DOM objects from template on page
     await insertTemplateData(templateId, parentElement);
 
+    //to be sure that elements exist in DOM add event listeners here
     if (templateId === "reg-login") {
         addFormsEvents();
     }
@@ -92,17 +93,113 @@ async function insertTemplateData(templateId, parentElement) {
 }
 
 function addFormsEvents(){
+
+ /************************************* */
+ /**events for registration form */ 
+
     const regForm = document.getElementById("registration");
-    const loginForm = document.getElementById("login");
-
-
+    const password = regForm.elements["password"];
+    const passwordCnfrm = regForm.elements["passwordCnfrm"];
     regForm.addEventListener("submit", (event) => {
         event.preventDefault();
+        //all error messages
+        let errors = "";
+        let inputField = null;
+
         console.log("reg form submit")
+        //check password
+        let pwdErrors = validatePassword(password.value);
+        if (pwdErrors) {
+            errors += pwdErrors;
+            if (inputField === null) inputField = password;
+        }
+        //check password match
+        if (password.value !== passwordCnfrm.value) {
+            errors += "\n Passwords do not match!"
+            //add focus only for the 1st field
+            if (inputField === null) inputField = passwordCnfrm;
+        }
+        //if we got any error messages - validation failed
+        if (errors.length > 0) {
+            showError(errors, inputField);
+            return false;
+        }
+
+        // //form is valid
+        // let user = saveUser();
+        // if (user !== null) {
+        //     clearForm(regForm);
+        //     alert(`Congrads, ${user.username}! You are registred!`)
+        // }
+        return true;
     });
 
+    
+    //on change event
+    password.addEventListener("change", (e) => {
+        e.preventDefault();
+        let message = validatePassword(e.target.value)
+        if (message.length > 0) {
+            showError(message, password);
+        }
+    })
+
+
+/*********************************** */
+/**events for login form */
+
+    const loginForm = document.getElementById("login");
     loginForm.addEventListener("submit", (event) => {
         event.preventDefault();
         console.log("login form submit")
     });
+}
+
+
+function validatePassword(password){
+    //collect all errors in password
+    let errorMessages = "";
+    // Passwords must have at least one uppercase and one lowercase letter.
+    let regex = new RegExp("[a-z]+");
+    if (!regex.test(password)) errorMessages += "\n Password must have at least one lowercase letter."
+    // Passwords must have at least one uppercase and one lowercase letter.
+    regex = new RegExp("[A-Z]+");
+    if (!regex.test(password)) errorMessages += "\n Password must have at least one uppercase letter."
+    // Passwords must contain at least one number.
+    regex = new RegExp("[0-9]+")
+    if (!regex.test(password)) errorMessages += "\n Password must contain at least one number."
+    // Passwords must contain at least one special character.
+    regex = new RegExp(/[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]+/);
+    if (!regex.test(password)) errorMessages += "\n Password must contain at least one special character."
+    // Passwords cannot contain the word "password"(uppercase, lowercase, or mixed).
+    regex = new RegExp("password");
+    if (regex.test(password.toLowerCase())) errorMessages += "\n Password cannot contain the word 'password'."
+    return errorMessages;
+}
+
+
+/***************************************************************** */
+/**
+ * Utility function for error box display
+ * @param {string} message 
+ * @param {DOM object} object  - optional
+ */
+function showError(message, object) {
+    const errorDisplay = document.getElementById("errors");
+    if (errorDisplay.firstChild) {
+        errorDisplay.removeChild(errorDisplay.firstChild);
+    }
+    //create new element in errorBox
+    let err = errorDisplay.appendChild(document.createElement("pre"));
+    //If we have invalid object - focus on it
+    if (object) object.focus();
+    //add error text in new DOM element
+    err.textContent = message;
+    //show error box on page
+    errorDisplay.style.display = "block";
+
+    // setTimeout(() => {
+    //     errorDisplay.removeChild(err);
+    //     errorDisplay.style.display = "none";
+    // }, 5000);
 }

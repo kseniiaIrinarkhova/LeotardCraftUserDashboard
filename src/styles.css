@@ -293,17 +293,26 @@ a:link {
     width: 680px;
         margin: 10px;
         padding: 5px;
+        height: 100%;
         display: grid;
-        grid-template-areas: "reg login";
+        grid-template-areas: 
+        "reg login"
+        "errors errors";
         grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 100px;
         
 }
 
 
+#errors{
+grid-area: errors;
+color: brown;
+text-align: center;
+}
 /********************LogIn page*****/
 
 div.login-form {
-    grid-area: "login";
+    grid-area: login;
     width: 250px;
     height: 400px;
     text-align: center;
@@ -331,7 +340,7 @@ a {
 /********************Registration page*****/
 
 div.register-form {
-    grid-area: "reg";
+    grid-area: reg;
     width: 400px;
     height: 500px;
     text-align: center;

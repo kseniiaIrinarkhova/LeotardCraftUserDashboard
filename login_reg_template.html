@@ -11,7 +11,7 @@
                 <table class="reg-table">
                     <tr>
                         <td class="td-label"><label for="userName">User Name</label></td>
-                        <td class="td-input"><input type="text" id="userName" placeholder="Enter Username" minlength="4" pattern="\w{4,}" title="only letters and numbers allowed" required>
+                        <td class="td-input"><input type="text" id="userName" placeholder="Enter Username" minlength="4" pattern="\w" title="Only letters and numbers allowed. UserName should be minimum 4 characters." required>
                         </td>
                     </tr>
                     <tr>
@@ -32,7 +32,7 @@
                     </tr>
                     <tr>
                         <td class="td-label"><label for="passwordCnfrm">Confirm Password</label></td>
-                        <td class="td-input"><input type="password" id="passwordCnfrm" placeholder="Confirm Your Password" required></td>
+                        <td class="td-input"><input type="text" id="passwordCnfrm" placeholder="Confirm Your Password" required></td>
                     </tr>
                     <tr>
                         <td colspan="2">
@@ -92,5 +92,6 @@
 
             <p>Forgot your <a href="#">Username</a> or <a href="#">Password?</a></p>
         </div>
+        <div id="errors"></div>
     </div>
 </template>
