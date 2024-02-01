@@ -186,9 +186,7 @@ function validatePassword(password){
  */
 function showError(message, object) {
     const errorDisplay = document.getElementById("errors");
-    if (errorDisplay.firstChild) {
-        errorDisplay.removeChild(errorDisplay.firstChild);
-    }
+    deleteChilds(errorDisplay);
     //create new element in errorBox
     let err = errorDisplay.appendChild(document.createElement("pre"));
     //If we have invalid object - focus on it
@@ -198,8 +196,8 @@ function showError(message, object) {
     //show error box on page
     errorDisplay.style.display = "block";
 
-    // setTimeout(() => {
-    //     errorDisplay.removeChild(err);
-    //     errorDisplay.style.display = "none";
-    // }, 5000);
+    setTimeout(() => {
+        errorDisplay.removeChild(err);
+        errorDisplay.style.display = "none";
+    }, 5000);
 }
