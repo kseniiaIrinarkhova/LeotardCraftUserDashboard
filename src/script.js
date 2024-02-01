@@ -7,7 +7,7 @@ userLogin.onclick = function (event) {
     //delete all child in main block
     deleteChilds(mainContent);
     //change main content to registration - login form
-    addLoginInfoToMain('login_reg_template.html', "reg-login",mainContent);
+    addLoginInfoToMain('login_reg_template.html', "reg-login", mainContent);
 
     //change style of main block
     let myStyle = `
@@ -89,17 +89,17 @@ async function insertTemplateData(templateId, parentElement) {
     const clone = template.content.cloneNode(true);
     //append elements from template to parent element
     parentElement.appendChild(clone);
-    
+
 }
 
-function addFormsEvents(){
-
- /************************************* */
- /**events for registration form */ 
-
+/************************************* */
+/**events for registration form */
+function addFormsEvents() {
     const regForm = document.getElementById("registration");
     const password = regForm.elements["password"];
     const passwordCnfrm = regForm.elements["passwordCnfrm"];
+
+    //registration form submit event
     regForm.addEventListener("submit", (event) => {
         event.preventDefault();
         //all error messages
@@ -126,7 +126,7 @@ function addFormsEvents(){
         }
 
         // //form is valid
-        // let user = saveUser();
+        // let user = saveUser(regForm);
         // if (user !== null) {
         //     clearForm(regForm);
         //     alert(`Congrads, ${user.username}! You are registred!`)
@@ -134,7 +134,7 @@ function addFormsEvents(){
         return true;
     });
 
-    
+
     //on change event
     password.addEventListener("change", (e) => {
         e.preventDefault();
@@ -142,21 +142,38 @@ function addFormsEvents(){
         if (message.length > 0) {
             showError(message, password);
         }
-    })
+    });
 
 
-/*********************************** */
-/**events for login form */
+    /*********************************** */
+    /**events for login form */
 
     const loginForm = document.getElementById("login");
-    loginForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        console.log("login form submit")
-    });
+
+    // loginForm.addEventListener("submit", (event) => {
+    //     event.preventDefault();
+    //     //check username
+    //     let username = loginForm.elements["username"];
+    //     if (!userExist(username.value)) {
+    //         showError("Username does not exist!", username);
+    //         return false;
+    //     }
+    //     //check if password is correct for this user
+    //     let password = loginForm.elements["password"];
+    //     if (!userDataCheck(username.value, password.value)) {
+    //         showError("Password is incorrect");
+    //         return false;
+    //     }
+
+    //     //username and password are valid. greet user
+    //     alert(`Welcome, ${username.value}!`);
+    //     //clear form
+    //     //clearForm(loginForm);
+
+    // });
 }
 
-
-function validatePassword(password){
+function validatePassword(password) {
     //collect all errors in password
     let errorMessages = "";
     // Passwords must have at least one uppercase and one lowercase letter.
@@ -200,4 +217,40 @@ function showError(message, object) {
         errorDisplay.removeChild(err);
         errorDisplay.style.display = "none";
     }, 5000);
+}
+
+/**
+ * Save user after form validation
+ * @returns user object
+ */
+function saveUser(userInfoElement) {
+    let newUser = {};
+    newUser["username"] = userInfoElement.elements["username"].value.toLowerCase();
+    newUser["email"] = userInfoElement.elements["email"].value.toLowerCase();
+    newUser["password"] = userInfoElement.elements["password"].value;
+    localStorage.setItem(newUser.username, JSON.stringify(newUser));
+    //console.log(JSON.parse(localStorage.getItem(newUser.username)));
+    return newUser;
+}
+
+
+/**
+ * check if we have such user in localStorage
+ * @param {string} username 
+ * @returns true if user exists, otherwise - false
+ */
+function userExist(username) {
+    return localStorage.getItem(username.toLowerCase()) !== null;
+}
+
+/**
+ * check username-password pair
+ * @param {string} username 
+ * @param {string} password 
+ * @returns true if password correct for username, otherwise - false
+ */
+function userDataCheck(username, password) {
+    //as we checked firstly username, user should exist in this check
+    let userData = JSON.parse(localStorage.getItem(username.toLowerCase()));
+    return userData.password === password;
 }

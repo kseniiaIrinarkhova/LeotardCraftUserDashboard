@@ -11,7 +11,7 @@
                 <table class="reg-table">
                     <tr>
                         <td class="td-label"><label for="userName">User Name</label></td>
-                        <td class="td-input"><input type="text" id="userName" placeholder="Enter Username" minlength="4" pattern="\w" title="Only letters and numbers allowed. UserName should be minimum 4 characters." required>
+                        <td class="td-input"><input type="text" id="userName" placeholder="Enter Username" minlength="4" pattern="\w{4,}" title="Only letters and numbers allowed. UserName should be minimum 4 characters." required>
                         </td>
                     </tr>
                     <tr>
@@ -80,10 +80,10 @@
             <!-- Login Form -->
             <form action="#" id="login">
                 <p>
-                    <input type="text" name="userName" placeholder="UserName" required>
+                    <input type="text" name="username" placeholder="UserName" required>
                 </p>
                 <p>
-                    <input type="password" placeholder="Password" required>
+                    <input type="password" name="password" placeholder="Password" required>
                 </p>
                 <p>
                     <input type="submit" value="Login" id="login-btn">
