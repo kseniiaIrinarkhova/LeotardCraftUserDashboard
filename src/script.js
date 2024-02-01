@@ -130,6 +130,7 @@ function addFormsEvents() {
         if (user !== null) {
             //clearForm(regForm);
             alert(`Congrads, ${user.username}! You are registred!`)
+            changePageforAuthorized();
         }
         return true;
     });
@@ -150,27 +151,26 @@ function addFormsEvents() {
 
     const loginForm = document.getElementById("login");
 
-    // loginForm.addEventListener("submit", (event) => {
-    //     event.preventDefault();
-    //     //check username
-    //     let username = loginForm.elements["username"];
-    //     if (!userExist(username.value)) {
-    //         showError("Username does not exist!", username);
-    //         return false;
-    //     }
-    //     //check if password is correct for this user
-    //     let password = loginForm.elements["password"];
-    //     if (!userDataCheck(username.value, password.value)) {
-    //         showError("Password is incorrect");
-    //         return false;
-    //     }
+    loginForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        //check username
+        let username = loginForm.elements["username"];
+        if (!userExist(username.value)) {
+            showError("Username does not exist!", username);
+            return false;
+        }
+        //check if password is correct for this user
+        let password = loginForm.elements["password"];
+        if (!userDataCheck(username.value, password.value)) {
+            showError("Password is incorrect");
+            return false;
+        }
 
-    //     //username and password are valid. greet user
-    //     alert(`Welcome, ${username.value}!`);
-    //     //clear form
-    //     //clearForm(loginForm);
-
-    // });
+        //username and password are valid. greet user
+        alert(`Welcome, ${username.value}!`);
+        
+        changePageforAuthorized();
+    });
 }
 
 function validatePassword(password) {
@@ -252,4 +252,8 @@ function userDataCheck(username, password) {
     //as we checked firstly username, user should exist in this check
     let userData = JSON.parse(localStorage.getItem(username.toLowerCase()));
     return userData.password === password;
+}
+
+function changePageforAuthorized(){
+    
 }
