@@ -381,3 +381,34 @@ div.register-form {
     /*gradient*/
 }
 
+.dashboard {
+    height: 100%;
+    width: 100%;
+}
+.dashboard-container {
+    background-color: green;
+    height: 100%;
+    display: grid;
+    grid-template-areas:
+        "picture rhinestones"
+        "fabric rhinestones";
+    grid-template-columns: 30vw 1fr;
+    grid-template-rows: 30vh 1fr;
+}
+
+
+.picture {
+    grid-area: picture;
+    background-color: beige;
+}
+
+.fabric-block {
+    grid-area: fabric;
+    background: aqua;
+}
+.rhinestones {
+    grid-area: rhinestones;
+    background-color: blue;
+    display: flex;
+    flex-flow: row nowrap;
+}
