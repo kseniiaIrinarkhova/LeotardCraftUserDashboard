@@ -259,8 +259,11 @@ function userDataCheck(username, password) {
  */
 function changePageforAuthorized(username){
     deleteChilds(mainContent);
-    mainContent.appendChild(document.createElement("h1")).textContent = `Hello ${username}! Let's create!`
-    addDashBoard("dashboard_templates.html", "main-info", mainContent);
+    let dashboardDiv = document.createElement("div");
+    mainContent.appendChild(dashboardDiv)
+    dashboardDiv.classList.add("dashboard");
+    dashboardDiv.appendChild(document.createElement("h1")).textContent = `Hello ${username}! Let's create!`
+    addDashBoard("dashboard_templates.html", "main-info", dashboardDiv);
 }
 
 /**
