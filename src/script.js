@@ -53,6 +53,7 @@ async function addLoginInfoToMain(templateName, templateId, parentElement) {
     if (templateId === "reg-login") {
         addFormsEvents();
     }
+    deleteTemplate(templateId);
 
 }
 
@@ -252,8 +253,21 @@ function userDataCheck(username, password) {
     return userData.password === password;
 }
 
+/**
+ * Function that provides UI for dashboard
+ * @param {string} username 
+ */
 function changePageforAuthorized(username){
     deleteChilds(mainContent);
     mainContent.appendChild(document.createElement("h1")).textContent = `Hello ${username}! Let's create!`
 
+}
+
+/**
+ * Helper function that delete used template from DOM 
+ * @param {string} templateId 
+ */
+function deleteTemplate(templateId){
+    const template = document.getElementById(templateId);
+    template.remove();
 }
