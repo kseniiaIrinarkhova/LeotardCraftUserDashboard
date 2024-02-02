@@ -389,7 +389,6 @@ div.register-form {
 }
 
 .dashboard-container {
-    background-color: green;
     height: 100%;
     display: grid;
     grid-template-areas:
@@ -402,12 +401,14 @@ div.register-form {
 
 .picture {
     grid-area: picture;
-    background-color: beige;
     border: 2px solid black;
     margin: 5px;
     border-radius: 25px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-content: center;
 }
-
 .fabric-block {
     grid-area: fabric;
     display: flex;
@@ -419,7 +420,6 @@ div.register-form {
 
 .rhinestones {
     grid-area: rhinestones;
-    background-color: blue;
     display: flex;
     flex-flow: row nowrap;
     height: 55vh;
@@ -428,7 +428,6 @@ div.register-form {
 
 div.rhinestones>div {
     width: 32%;
-    border: 1px solid black;
     display: flex;
     flex-flow: column nowrap;
     align-content: center;
@@ -462,7 +461,7 @@ div.rhinestones>div {
     text-align: center;
 }
 
-.fabric:hover{
+.fabric:hover,.picture:hover{
 color: #32456F;
 border-color: #32456F;
 }
