@@ -429,6 +429,9 @@ div.register-form {
 div.rhinestones>div {
     width: 32%;
     border: 1px solid black;
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: center;
 }
 
 .rhinestone-btn {
@@ -438,14 +441,20 @@ div.rhinestones>div {
     text-align: center;
     min-width: 70px;
     font-family: basic;
+    background-color: #855FBF;
+    border-radius: 15px;
+    width: 80%;
+    align-self: center;
+}
+
+.rhinestone-btn:hover {
+    background-color: #f4effa;
+    border: 2px solid #9776C8;
 }
 
 .fabric {
-    margin-right: 50px;
-    background-color: #9776C8;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-content: center;
+    width: 45%;
+    height: 45%;
+    border: 2px solid black;
     border-radius: 15px;
 }
