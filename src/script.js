@@ -260,7 +260,7 @@ function userDataCheck(username, password) {
 function changePageforAuthorized(username){
     deleteChilds(mainContent);
     mainContent.appendChild(document.createElement("h1")).textContent = `Hello ${username}! Let's create!`
-
+    addDashBoard("dashboard_templates.html", "main-info", mainContent);
 }
 
 /**
@@ -270,4 +270,14 @@ function changePageforAuthorized(username){
 function deleteTemplate(templateId){
     const template = document.getElementById(templateId);
     template.remove();
+}
+
+/**
+ * asynchronous function for adding information from templates
+ */
+async function addDashBoard(templateName, templateId, parentElement) {
+    //wait while templarte is added
+    await addTemplate(templateName);
+    //insert DOM objects from template on page
+    await insertTemplateData(templateId, parentElement);
 }
