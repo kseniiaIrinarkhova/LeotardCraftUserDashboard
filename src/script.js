@@ -290,13 +290,10 @@ async function addDashBoard(templateName, templateId, parentElement) {
 function addButtonsEvents(parentElement) {
     const picture = parentElement.getElementsByClassName("picture")[0];
     const fabric = parentElement.getElementsByClassName("fabric-block")[0];
-    console.log(fabric);
-
     picture.addEventListener("click", showLaterFeatureAlert);
     fabric.addEventListener("click", showLaterFeatureAlert);
 }
 
 function showLaterFeatureAlert(e) {
-    console.log(e.target.parentNode.classList)
-    alert(`Feature for uploading information to ${e.target.parentElement.classList} would be added later.`);
+    alert(`Feature for uploading information to ${e.target.classList} would be added later.`);
 }
