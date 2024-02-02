@@ -288,27 +288,29 @@ a:link {
 .footer-links a:hover {
     color: #BDA7DC;
 }
+
 /*********************************************/
 .form-container {
     width: 680px;
-        margin: 10px;
-        padding: 5px;
-        height: 100%;
-        display: grid;
-        grid-template-areas: 
+    margin: 10px;
+    padding: 5px;
+    height: 100%;
+    display: grid;
+    grid-template-areas:
         "reg login"
         "errors errors";
-        grid-template-columns: 1fr 1fr;
-        grid-template-rows: 1fr 100px;
-        
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 100px;
+
 }
 
 
-#errors{
-grid-area: errors;
-color: brown;
-text-align: center;
+#errors {
+    grid-area: errors;
+    color: brown;
+    text-align: center;
 }
+
 /********************LogIn page*****/
 
 div.login-form {
@@ -385,6 +387,7 @@ div.register-form {
     height: 100%;
     width: 100%;
 }
+
 .dashboard-container {
     background-color: green;
     height: 100%;
@@ -400,15 +403,49 @@ div.register-form {
 .picture {
     grid-area: picture;
     background-color: beige;
+    border: 2px solid black;
+    margin: 5px;
+    border-radius: 25px;
 }
 
 .fabric-block {
     grid-area: fabric;
-    background: aqua;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-content: space-between;
+    height: 25vh;
 }
+
 .rhinestones {
     grid-area: rhinestones;
     background-color: blue;
     display: flex;
     flex-flow: row nowrap;
+    height: 55vh;
+    justify-content: space-between;
+}
+
+div.rhinestones>div {
+    width: 32%;
+    border: 1px solid black;
+}
+
+.rhinestone-btn {
+    padding: 15px;
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: center;
+    min-width: 70px;
+    font-family: basic;
+}
+
+.fabric {
+    margin-right: 50px;
+    background-color: #9776C8;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-content: center;
+    border-radius: 15px;
 }
