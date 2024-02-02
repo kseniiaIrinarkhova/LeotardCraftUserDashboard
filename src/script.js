@@ -257,7 +257,7 @@ function userDataCheck(username, password) {
  * Function that provides UI for dashboard
  * @param {string} username 
  */
-function changePageforAuthorized(username){
+function changePageforAuthorized(username) {
     deleteChilds(mainContent);
     let dashboardDiv = document.createElement("div");
     mainContent.appendChild(dashboardDiv)
@@ -270,7 +270,7 @@ function changePageforAuthorized(username){
  * Helper function that delete used template from DOM 
  * @param {string} templateId 
  */
-function deleteTemplate(templateId){
+function deleteTemplate(templateId) {
     const template = document.getElementById(templateId);
     template.remove();
 }
@@ -283,4 +283,20 @@ async function addDashBoard(templateName, templateId, parentElement) {
     await addTemplate(templateName);
     //insert DOM objects from template on page
     await insertTemplateData(templateId, parentElement);
+
+    addButtonsEvents(parentElement);
+}
+
+function addButtonsEvents(parentElement) {
+    const picture = parentElement.getElementsByClassName("picture")[0];
+    const fabric = parentElement.getElementsByClassName("fabric-block")[0];
+    console.log(fabric);
+
+    picture.addEventListener("click", showLaterFeatureAlert);
+    fabric.addEventListener("click", showLaterFeatureAlert);
+}
+
+function showLaterFeatureAlert(e) {
+    console.log(e.target.parentNode.classList)
+    alert(`Feature for uploading information to ${e.target.parentElement.classList} would be added later.`);
 }
