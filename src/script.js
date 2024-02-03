@@ -304,37 +304,63 @@ async function addDashBoard(templateName, templateId, parentElement) {
     addButtonsEvents(parentElement);
 }
 
+/**
+ * function that add dummy events for dashboard elements
+ * @param {object} parentElement 
+ */
 function addButtonsEvents(parentElement) {
+    //choose all interactive events from form
     const picture = parentElement.getElementsByClassName("picture")[0];
     const fabric = parentElement.getElementsByClassName("fabric-block")[0];
+    const rhinestonesBtns = parentElement.getElementsByClassName("rhinestone-btn");
+    //set dummy event
     picture.addEventListener("click", showLaterFeatureAlert);
     fabric.addEventListener("click", showLaterFeatureAlert);
+    Array.prototype.forEach.call(rhinestonesBtns, (element) => {
+        console.log(element)
+        element.addEventListener("click", showLaterFeatureAlert)
+});
+    
 }
 
+/**
+ * Event handler for clicking on objects in dashboard
+ * @param {object} e 
+ */
 function showLaterFeatureAlert(e) {
+    e.preventDefault();
     alert(`Feature for uploading information to ${e.target.classList} would be added later.`);
 }
 
+/**
+ * Function for changing personal menu after user authentification
+ */
 function changePersonalMenu() {
+    //remove authentification event from personal link
     userLogin.removeEventListener("click", authentifyUser)
-    // const personalMenuLinks = document.getElementsByClassName("personal-menu")[0].getElementsByTagName("a");
-    // console.log(document.getElementsByClassName("personal-menu")[0])
-    // console.log(personalMenuLinks)
-    let links = document.getElementsByClassName("personal-menu")[0];
-    let link = links.firstElementChild;
-    while(link){
+    //get all links in personal menu and save 1st child
+    let link = document.getElementsByClassName("personal-menu")[0].firstElementChild;
+    //change all elements
+    while (link) {
+        //currently we have new behaviour on LogIn/Logout link
         switch (link.getAttribute("id")) {
+
             case "user":
+                //delete current childs
                 deleteChilds(link);
+                //create new img element
                 const img = document.createElement("img");
-                link.appendChild(img);
-                link.appendChild(document.createElement("br"))
-                userLogin.addEventListener("click", logOut);
+                //set image attributes
                 img.setAttribute("src", "./src/img/user-loggedin.png");
                 img.setAttribute("alt", "LogOut");
+                //append image, line break and text
+                link.appendChild(img);
+                link.appendChild(document.createElement("br"))
                 link.append('Log Out');
+                //add new event listener
+                userLogin.addEventListener("click", logOut);
                 break;
-        
+
             default:
                 link.firstElementChild.setAttribute("src", "./src/img/favorite-full.png")
                 break;
@@ -342,22 +368,15 @@ function changePersonalMenu() {
 
         link = link.nextElementSibling;
     }
-    // for (let linkId in personalMenuLinks) {
-    // //     const link = personalMenuLinks[linkId];
-    //     deleteChilds(link);
-    //     const img = document.createElement("img");
-    //     link.appendChild(img);
-    //     if (personalMenuLinks[linkId].id == "user") {
-    //         userLogin.addEventListener("click", logOut);
-    //         img.setAttribute("src", "./src/img/user-loggedin.png");
-    //         img.setAttribute("alt", "LogOut");
-    //         link.append('LogOut');
 
-    //     }
-    // }
 }
 
+/**
+ * Event simulating LogOut
+ * @param {object} event 
+ */
 function logOut(event) {
     event.preventDefault();
+    //reload page
     location.reload();
 }
