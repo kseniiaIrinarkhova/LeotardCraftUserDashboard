@@ -2,26 +2,26 @@ const userLogin = document.getElementById("user");
 const mainContent = document.getElementById("main-content");
 //ad on-click event for user menu
 // userLogin.onclick = function (event) {
-    // //prevent anchor link referance
-    // event.preventDefault()
-    // //delete all child in main block
-    // deleteChilds(mainContent);
-    // //change main content to registration - login form
-    // addLoginInfoToMain('login_reg_template.html', "reg-login", mainContent);
+// //prevent anchor link referance
+// event.preventDefault()
+// //delete all child in main block
+// deleteChilds(mainContent);
+// //change main content to registration - login form
+// addLoginInfoToMain('login_reg_template.html', "reg-login", mainContent);
 
-    // //change style of main block
-    // let myStyle = `
-    // display: flex;
-    // justify-content: center;
-    // align-content: center;`;
+// //change style of main block
+// let myStyle = `
+// display: flex;
+// justify-content: center;
+// align-content: center;`;
 
-    // mainContent.style.cssText = myStyle;
+// mainContent.style.cssText = myStyle;
 
 
 // }
-userLogin.addEventListener("click", authorizeUser)
+userLogin.addEventListener("click", authentifyUser)
 
-function authorizeUser(event){
+function authentifyUser(event) {
     //prevent anchor link referance
     event.preventDefault()
     //delete all child in main block
@@ -315,15 +315,49 @@ function showLaterFeatureAlert(e) {
     alert(`Feature for uploading information to ${e.target.classList} would be added later.`);
 }
 
-function changePersonalMenu()
-{
-    const personalMenuLinks = document.getElementsByClassName("personal-menu")[0].getElementsByTagName("a");
-    console.log(document.getElementsByClassName("personal-menu")[0])
-    console.log(personalMenuLinks)
-    for(let linkId in personalMenuLinks){
-        if(personalMenuLinks[linkId].id == "user")
-        {
-            console.log("let's change begins")
+function changePersonalMenu() {
+    userLogin.removeEventListener("click", authentifyUser)
+    // const personalMenuLinks = document.getElementsByClassName("personal-menu")[0].getElementsByTagName("a");
+    // console.log(document.getElementsByClassName("personal-menu")[0])
+    // console.log(personalMenuLinks)
+    let links = document.getElementsByClassName("personal-menu")[0];
+    let link = links.firstElementChild;
+    while(link){
+        switch (link.getAttribute("id")) {
+            case "user":
+                deleteChilds(link);
+                const img = document.createElement("img");
+                link.appendChild(img);
+                link.appendChild(document.createElement("br"))
+                userLogin.addEventListener("click", logOut);
+                img.setAttribute("src", "./src/img/user-loggedin.png");
+                img.setAttribute("alt", "LogOut");
+                link.append('Log Out');
+                break;
+        
+            default:
+                link.firstElementChild.setAttribute("src", "./src/img/favorite-full.png")
+                break;
         }
+
+        link = link.nextElementSibling;
     }
+    // for (let linkId in personalMenuLinks) {
+    // //     const link = personalMenuLinks[linkId];
+    //     deleteChilds(link);
+    //     const img = document.createElement("img");
+    //     link.appendChild(img);
+    //     if (personalMenuLinks[linkId].id == "user") {
+    //         userLogin.addEventListener("click", logOut);
+    //         img.setAttribute("src", "./src/img/user-loggedin.png");
+    //         img.setAttribute("alt", "LogOut");
+    //         link.append('LogOut');
+
+    //     }
+    // }
+}
+
+function logOut(event) {
+    event.preventDefault();
+    location.reload();
 }
