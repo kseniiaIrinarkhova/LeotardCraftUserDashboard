@@ -338,9 +338,17 @@ event.preventDefault()
 console.log(rhinestoneType);
 const userData = window.prompt(`Add information about ${rhinestoneType.classList} rhinestone: `)
 if(userData){
-    const rhinestoneData = document.createElement("p")
+
+    let parentElement = rhinestoneType.getElementsByClassName("list")[0];
+    if(parentElement.firstChild){
+        parentElement = parentElement.firstChild
+    }
+    else{
+        parentElement = parentElement.appendChild(document.createElement("ul"))
+    }
+    const rhinestoneData = document.createElement("li")
     rhinestoneData.textContent = userData
-    rhinestoneType.appendChild(rhinestoneData);
+    parentElement.appendChild(rhinestoneData);
 }
 }
 
