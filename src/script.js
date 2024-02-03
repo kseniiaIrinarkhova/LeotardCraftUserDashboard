@@ -1,24 +1,6 @@
 const userLogin = document.getElementById("user");
 const mainContent = document.getElementById("main-content");
-//ad on-click event for user menu
-// userLogin.onclick = function (event) {
-// //prevent anchor link referance
-// event.preventDefault()
-// //delete all child in main block
-// deleteChilds(mainContent);
-// //change main content to registration - login form
-// addLoginInfoToMain('login_reg_template.html', "reg-login", mainContent);
-
-// //change style of main block
-// let myStyle = `
-// display: flex;
-// justify-content: center;
-// align-content: center;`;
-
-// mainContent.style.cssText = myStyle;
-
-
-// }
+//add on-click event for user menu
 userLogin.addEventListener("click", authentifyUser)
 
 function authentifyUser(event) {
@@ -316,11 +298,11 @@ function addButtonsEvents(parentElement) {
     //set dummy event
     picture.addEventListener("click", showLaterFeatureAlert);
     fabric.addEventListener("click", showLaterFeatureAlert);
+    //set simple event for getting user data
     Array.prototype.forEach.call(rhinestonesBtns, (element) => {
-        console.log(element)
         element.addEventListener("click", addRhinestoneInfo)
-});
-    
+    });
+
 }
 
 /**
@@ -332,24 +314,36 @@ function showLaterFeatureAlert(event) {
     alert(`Feature for uploading information to ${event.target.classList} would be added later.`);
 }
 
-function addRhinestoneInfo(event){
-event.preventDefault()
+/**
+ * Event handler that take user data from prompt window and add it as list 
+ * @param {object} event 
+ */
+function addRhinestoneInfo(event) {
+    event.preventDefault()
+    //find parent element to know the type of rhinestone
     const rhinestoneType = event.target.parentElement
-console.log(rhinestoneType);
-const userData = window.prompt(`Add information about ${rhinestoneType.classList} rhinestone: `)
-if(userData){
-
-    let parentElement = rhinestoneType.getElementsByClassName("list")[0];
-    if(parentElement.firstChild){
-        parentElement = parentElement.firstChild
+    //take data from user
+    const userData = window.prompt(`Add information about ${rhinestoneType.classList} rhinestone: `)
+    //if user add something
+    if (userData) {
+//take child div element that should contain all rhinestone info
+        let parentElement = rhinestoneType.getElementsByClassName("list")[0];
+        //if there is some inforation about rhinestones
+        if (parentElement.firstChild) {
+            //change our parent element - for unordered list HTML element
+            parentElement = parentElement.firstChild
+        }
+        else {
+            //if threre is fist rhilestone in this type - add firstly unordered list HTML element
+            parentElement = parentElement.appendChild(document.createElement("ul"))
+        }
+        //create list item element
+        const rhinestoneData = document.createElement("li")
+        //add user data as text
+        rhinestoneData.textContent = userData
+        //append data at the end of list
+        parentElement.appendChild(rhinestoneData);
     }
-    else{
-        parentElement = parentElement.appendChild(document.createElement("ul"))
-    }
-    const rhinestoneData = document.createElement("li")
-    rhinestoneData.textContent = userData
-    parentElement.appendChild(rhinestoneData);
-}
 }
 
 /**

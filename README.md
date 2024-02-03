@@ -41,13 +41,19 @@ Username and passwor previouly registred user shoul be entered in this step.
 
 # ![Login](/readme_img/5.png "Login form")
 
-There is dummy event handler for dashboard actions. If picture box, places for fabrics and rhinestones buttons are clicked - system show allert.
+There is dummy event handler for dashboard actions. If picture box or places for fabrics are clicked - system show allert.
 
 # ![Picture block is clicked](/readme_img/6.png)
 
 # ![Fabric blocks are clicked](/readme_img/7.png)
 
-# ![Add diferent kinds of rhinestones buttons are clicked](/readme_img/8.png)
+There is draft behaviour of adding rhinestones information. User could click on any rhinestone adding button and enter information about rhinestones that should be added. 
+
+# ![Add rhinestones button prompt window](/readme_img/10.png)
+
+After submitting this information is shown in dashboard in colomn that related to chosen rhinestone type.
+
+# ![Lists of rhinestones](/readme_img/11.png)
 
 User could simulate Log Out action by clicking on LogOut button
 
