@@ -1,7 +1,27 @@
 const userLogin = document.getElementById("user");
 const mainContent = document.getElementById("main-content");
 //ad on-click event for user menu
-userLogin.onclick = function (event) {
+// userLogin.onclick = function (event) {
+    // //prevent anchor link referance
+    // event.preventDefault()
+    // //delete all child in main block
+    // deleteChilds(mainContent);
+    // //change main content to registration - login form
+    // addLoginInfoToMain('login_reg_template.html', "reg-login", mainContent);
+
+    // //change style of main block
+    // let myStyle = `
+    // display: flex;
+    // justify-content: center;
+    // align-content: center;`;
+
+    // mainContent.style.cssText = myStyle;
+
+
+// }
+userLogin.addEventListener("click", authorizeUser)
+
+function authorizeUser(event){
     //prevent anchor link referance
     event.preventDefault()
     //delete all child in main block
@@ -16,11 +36,7 @@ userLogin.onclick = function (event) {
     align-content: center;`;
 
     mainContent.style.cssText = myStyle;
-
-
 }
-
-
 
 
 
