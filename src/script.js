@@ -147,7 +147,7 @@ function addFormsEvents() {
         if (user !== null) {
             //clearForm(regForm);
             alert(`Congrads, ${user.username}! You are registred!`)
-            changePageforAuthorized(username.value);
+            changePageforAuthorized(user.username);
         }
         return true;
     });
