@@ -264,6 +264,7 @@ function changePageforAuthorized(username) {
     dashboardDiv.classList.add("dashboard");
     dashboardDiv.appendChild(document.createElement("h1")).textContent = `Hello ${username}! Let's create!`
     addDashBoard("dashboard_templates.html", "main-info", dashboardDiv);
+    changePersonalMenu();
 }
 
 /**
@@ -296,4 +297,17 @@ function addButtonsEvents(parentElement) {
 
 function showLaterFeatureAlert(e) {
     alert(`Feature for uploading information to ${e.target.classList} would be added later.`);
+}
+
+function changePersonalMenu()
+{
+    const personalMenuLinks = document.getElementsByClassName("personal-menu")[0].getElementsByTagName("a");
+    console.log(document.getElementsByClassName("personal-menu")[0])
+    console.log(personalMenuLinks)
+    for(let linkId in personalMenuLinks){
+        if(personalMenuLinks[linkId].id == "user")
+        {
+            console.log("let's change begins")
+        }
+    }
 }
