@@ -318,18 +318,30 @@ function addButtonsEvents(parentElement) {
     fabric.addEventListener("click", showLaterFeatureAlert);
     Array.prototype.forEach.call(rhinestonesBtns, (element) => {
         console.log(element)
-        element.addEventListener("click", showLaterFeatureAlert)
+        element.addEventListener("click", addRhinestoneInfo)
 });
     
 }
 
 /**
  * Event handler for clicking on objects in dashboard
- * @param {object} e 
+ * @param {object} event 
  */
-function showLaterFeatureAlert(e) {
-    e.preventDefault();
-    alert(`Feature for uploading information to ${e.target.classList} would be added later.`);
+function showLaterFeatureAlert(event) {
+    event.preventDefault();
+    alert(`Feature for uploading information to ${event.target.classList} would be added later.`);
+}
+
+function addRhinestoneInfo(event){
+event.preventDefault()
+    const rhinestoneType = event.target.parentElement
+console.log(rhinestoneType);
+const userData = window.prompt(`Add information about ${rhinestoneType.classList} rhinestone: `)
+if(userData){
+    const rhinestoneData = document.createElement("p")
+    rhinestoneData.textContent = userData
+    rhinestoneType.appendChild(rhinestoneData);
+}
 }
 
 /**
